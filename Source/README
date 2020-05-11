@@ -1,0 +1,36 @@
+A 64-bit linux enviroment enviroment is required.
+
+-Need to check if your GCC supports the Plugin 
+	g++ -print-file-name=plugin, if output a path then it supports
+-Please upgrade your gcc to version 7.5
+-Install GCC plugin dev
+	sudo apt-get install -y gcc-7-plugin-dev
+- run the same command again
+	g++ -print-file-name=plugin, if output a path then it supports
+-replace the output with the this line in make file
+
+-Install python3.6
+
+-Install pycparser
+	pip3 install pycparser
+-Disable space randomization
+	sudo sysctl -w kernel.randomize_va_space=0
+-Run test without protection
+	for return address test: 
+		make ret_addr
+		./vuln.o
+   	for function pointer test: 
+   		make func_ptr
+   		./func_ptr_overflow_test.o
+-Run test with protection
+	for return address test: 
+		make plugin_ret_addr
+		./vuln.o
+   	for function pointer test: 
+   		make plugin_func_ptr
+   		./func_ptr_overflow_test.o
+
+
+some commands I used when encountered error:
+1. sudo dpkg --configure -a
+
